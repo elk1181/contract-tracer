@@ -5,21 +5,35 @@ var express = require('express'),
     dotenv = require('dotenv');
 dotenv.config();
     var app = express();
-    app.use(express.static('src'));
+var username;
+var password;
+app.set('view engine', 'ejs');
+ app.use(express.static('src'));
     app.use(bodyParser.urlencoded({extended: true}));
     app.use(bodyParser.json());
+
     const port = process.env.PORT || 3000;;
     app.get('/', function (req, res) {
       res.render('index');
     });
+
+
+    if(port==3000){
+      username=process.env.USER_NAME;
+      password=process.env.PASSWORD;
+    }
+    if(port==process.env.PORT){
+      username=USER_NAME;
+      password=PASSWORD;
+    }
     app.post('/send', function (req, res) {
       let transporter = nodeMailer.createTransport({
           host: 'smtp.gmail.com',
           port: 465,
           secure: true,
           auth: {
-              user: process.env.USER_NAME,
-              pass: process.env.PASSWORD
+              user: username,
+              pass: password
           }
       });
       let mailOptions = {
