@@ -23,8 +23,8 @@ app.set('view engine', 'ejs');
       password=process.env.PASSWORD;
     }
     if(port==process.env.PORT){
-      username=USER_NAME;
-      password=PASSWORD;
+      username=process.env.USER_NAME;
+      password=process.env.PASSWORD;
     }
     app.post('/send', function (req, res) {
       let transporter = nodeMailer.createTransport({
