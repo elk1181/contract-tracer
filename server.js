@@ -8,7 +8,7 @@ dotenv.config();
     app.use(express.static('src'));
     app.use(bodyParser.urlencoded({extended: true}));
     app.use(bodyParser.json());
-    var port = 3000;
+    const port = process.env.PORT || 3000;;
     app.get('/', function (req, res) {
       res.render('index');
     });
