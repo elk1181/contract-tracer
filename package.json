@@ -5,8 +5,6 @@
   "description": "A Contact Tracer for COVID-19 for Emory",
   "main": "index.js",
   "scripts": {
-    "predeploy": "nodemon server",
-"deploy": "gh-pages -d build",
     "start": "nodemon server"
   },
   "author": "Emma Koslow",
