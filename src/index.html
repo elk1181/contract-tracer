@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+   <link rel="shortcut icon" href="/emory-logo.png">
+    <title>ECheck</title>
+  <style>
+*{
+  background-color: #0066ff;
+}
+  .App-header {
+    background-color: #0066ff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  .head{
+      background-color: #0066ff;
+      font-size:64px;
+      color:white;
+  }
+  .App {
+    text-align: center;
+    background-color: #0066ff;
+  }
+  .emailButt{
+    background-color: #008CBA;
+    border: none;
+   color: white;
+   padding: 15px 32px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 30px;
+   margin: 4px 2px;
+   cursor: pointer;
+   min-height: 20vh;
+   min-width:50vh;
+   margin-top:5%;
+  }
+
+  .modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+  color: white;
+font-size: 30px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+   margin-top:10%;
+}
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.formContent{
+  margin-top:-3%;
+  font-size:30px;
+}
+::placeholder {
+  color: white;
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  color: white;
+}
+
+::-ms-input-placeholder {
+  color: white;
+}
+
+  </style>
+  </head>
+  <body>
+      <div class="App">
+        <h1 class="head"> Emory University Contact Tracers </h1>
+
+              <div class="head" > <h3 class="insideHead"> Have you tested positive for COVID-19? </h3>
+                </div>
+
+<button id="myBtn" class="emailButt">Click Here </button>
+
+    <div id="form" class="modal"><br />
+<div class="modal-content">
+  <span class="close">&times;</span>
+      <p>Send Message to Students/Faculty</p>
+      <br>
+
+      <form class="formContent" action="/send" method="post" onsubmit="success()">
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="form-group col-md-4">
+            <label for="to">To:</label>
+            <input style="font-size:25px; width:700px"  placeholder="separate more than one email with a comma and a space" type="text" class="form-control" name="to" id="to">
+          </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="form-group col-md-4">
+            <button type="submit" class="btn btn-success" style="font-size: 30px;">Send</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+    <script>
+
+    var modal = document.getElementById("form");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    function success(){
+    alert("Thank you!" + " "+ "Alert has been sent to" + " " + document.getElementById("to").value);
+   modal.style.display = "none";
+    }
+
+
+    </script>
+  </body>
+</html>
